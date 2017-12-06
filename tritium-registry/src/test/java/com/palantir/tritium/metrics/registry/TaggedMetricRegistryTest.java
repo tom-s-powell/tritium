@@ -24,6 +24,7 @@ import com.codahale.metrics.Gauge;
 import com.codahale.metrics.Histogram;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.Timer;
+import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -114,4 +115,17 @@ public final class TaggedMetricRegistryTest {
                 .isThrownBy(() -> registry.timer(METRIC_1))
                 .withMessage("'name' already used for a metric of type 'Counter' but wanted type 'Timer'. tags: {}");
     }
+
+    @Test
+    public void canRemoveMetrics() {
+        Counter counter = registry.counter(METRIC_1);
+        assertThat(registry.getMetrics()).containsEntry(METRIC_1, counter);
+
+        registry.removeMetrics(ImmutableList.of(METRIC_1));
+        assertThat(registry.getMetrics()).doesNotContainKey(METRIC_1);
+
+        counter = registry.counter(METRIC_1);
+        assertThat(registry.getMetrics()).containsEntry(METRIC_1, counter);
+    }
+
 }

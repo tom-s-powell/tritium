@@ -21,3 +21,6 @@ org.mockito:* = 1.10.19
 org.mpierce.metrics.reservoir:* = 1.1.2
 org.openjdk.jmh:* = 1.19
 org.slf4j:* = 1.7.12
+com.fasterxml.jackson.*:jackson-* = 2.9.6
+com.google.googlejavaformat:google-java-format = 1.5
+com.squareup:javapoet = 1.11.1

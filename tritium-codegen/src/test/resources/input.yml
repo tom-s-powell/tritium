@@ -1,0 +1,9 @@
+gauges:
+- something.graph
+- something.count
+- something.foomonitor.initialize.time
+- something.bazgroups.running.count
+
+meters:
+- something.foo
+- something.bar
